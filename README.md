@@ -40,6 +40,7 @@ iOSアプリ「国道図鑑」が使用する、日本の一般国道459路線�
 {
   "sources": { "geometry": "...", "attributes": "...", "dataRepo": "..." },
   "dataYear": "2024",
+  "dataVersion": 2,
   "highways": [
     {
       "number": 42,
@@ -57,6 +58,8 @@ iOSアプリ「国道図鑑」が使用する、日本の一般国道459路線�
       "overlapRoutes": [1, 23, 167, 259, 311, 424],
       "hasSea": true,
       "hasSteps": false,
+      "originCoord": [137.5891, 34.7102],
+      "terminalCoord": [135.1712, 34.2261],
       "polylines": [
         { "kind": "normal", "coords": [[経度, 緯度], ...] },
         { "kind": "sea", "coords": [...] }
@@ -69,6 +72,13 @@ iOSアプリ「国道図鑑」が使用する、日本の一般国道459路線�
 - `kind`: `normal`(通常区間)/ `sea`(海上区間・フェリー航路)/
   `steps`(階段区間)
 - 座標は `[経度, 緯度]`、小数第5位丸め
+- **`prefectures` は都道府県コード順(JIS X 0401、北から)であり、
+  経路順(起点→終点順)ではありません**。出典の道路統計年報 表26の
+  掲載順に由来します。起点・終点の位置が必要な場合は `originCoord` /
+  `terminalCoord`(経路端点の座標、向き確定済み)を使ってください
+- `originCoord` / `terminalCoord`: 起点・終点のマーカー座標
+  `[経度, 緯度]`。路線ポリラインの端点のうち、起点・終点名を
+  ジオコーディングした座標に最も近いものを選んで向きを確定している
 
 ## ライセンス
 
